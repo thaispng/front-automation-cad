@@ -13,6 +13,9 @@
   --container-primary: 243, 244, 246;
   --button: 219, 234, 254;
   --color-hover: 191, 219, 254;
+  --scrollbar-track-color: #f1f1f1;
+  --scrollbar-thumb-color: #888;
+  --scrollbar-thumb-hover-color: #555;
 }
 
 [data-theme="dark"] {
@@ -26,6 +29,9 @@
   --container-primary: 18, 18, 18;
   --button: 36,36,36;
   --color-hover: 0, 0, 0;
+  --scrollbar-track-color: #2c2c2c;
+  --scrollbar-thumb-color: #888;
+  --scrollbar-thumb-hover-color: #555;
 }
 
 body {
@@ -72,4 +78,29 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+}
+
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--scrollbar-track-color);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--scrollbar-thumb-color);
+  border-radius: 6px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scrollbar-thumb-hover-color);
+}
+
+/* Estilizando a barra de rolagem para Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--scrollbar-thumb-color) var(--scrollbar-track-color);
 }

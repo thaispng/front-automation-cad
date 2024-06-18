@@ -7,10 +7,12 @@ import FileUpload from "../components/ui/input/page";
 import Dash from '../../public/dash.png';
 import dmSans from "../app/layout";
 import axios from "axios";
-  import Button from "../components/ui/button/page";
+import Button from "../components/ui/button/page";
+
 const Home: React.FC = () => {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [message, setMessage] = useState<string>('');
+  const [messageType, setMessageType] = useState<string>(''); // Success or Error
 
   const handleFileSelect = (file: File) => {
     setSelectedFile(file);
@@ -20,6 +22,7 @@ const Home: React.FC = () => {
     e.preventDefault();
     if (!selectedFile) {
       setMessage('Selecione um arquivo para enviar.');
+      setMessageType('error');
       return;
     }
 
@@ -33,8 +36,10 @@ const Home: React.FC = () => {
         },
       });
       setMessage(response.data.message);
+      setMessageType('success');
     } catch (error) {
       setMessage('Falha ao enviar o arquivo.');
+      setMessageType('error');
     }
   };
 
@@ -54,7 +59,7 @@ const Home: React.FC = () => {
               <FileUpload onFileSelect={handleFileSelect} />
             </div>
             <div className="w-full flex flex-row items-center justify-center">
-            <Button
+              <Button
                 type="submit"
                 backgroundColor="#334155"
                 rounded="rounded"
@@ -65,7 +70,11 @@ const Home: React.FC = () => {
                 Iniciar
               </Button>
             </div>
-            {message && <p>{message}</p>}
+            {message && (
+              <p className={`mt-4 p-2 rounded ${messageType === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-700'}`}>
+                {message}
+              </p>
+            )}
           </form>
         </div>
         <div className="hidden md:flex flex-col w-full md:w-[500px] h-full items-center justify-center px-5">
