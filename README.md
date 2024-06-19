@@ -1,5 +1,4 @@
-# O Sistema de Gestão de Obra para Inspeção.
-
+# Front da Automação 
 ## Índice
 
 - [Sobre](#sobre)
