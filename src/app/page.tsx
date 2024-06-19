@@ -10,18 +10,18 @@ import axios from "axios";
 import Button from "../components/ui/button/page";
 
 const Home: React.FC = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null);
-  const [message, setMessage] = useState<string>('');
-  const [messageType, setMessageType] = useState<string>(''); // Success or Error
+  const [selectedFile, setSelectedFile] = useState<File | null>(null); // armazena o arquivo selecionado
+  const [message, setMessage] = useState<string>(''); // crisr menssagem de erro e sucesso
+  const [messageType, setMessageType] = useState<string>(''); // menssage de sucesso e erro
 
   const handleFileSelect = (file: File) => {
-    setSelectedFile(file);
+    setSelectedFile(file); // seta o arquivo selecionado
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedFile) {
-      setMessage('Selecione um arquivo para enviar.');
+    if (!selectedFile) { // se o arqquivo não for selecionado irá retornar uma mensagem de erro
+      setMessage('Selecione um arquivo para enviar.'); 
       setMessageType('error');
       return;
     }
@@ -30,7 +30,7 @@ const Home: React.FC = () => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post('process.env.NEXT_API_URL', formData, {
+      const response = await axios.post('http://localhost:5000/upload', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },

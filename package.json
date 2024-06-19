@@ -1,7 +1,8 @@
 {
   "name": "front-automation-cad",
   "version": "0.1.0",
-  "private": true,
+  "description": "Front Automation CAD",
+  "author": "Thais <thaisvtr26@gmail.com>",
   "main": "src/main.js",
   "scripts": {
     "dev": "next dev",
@@ -14,7 +15,6 @@
   "dependencies": {
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
-    "electron": "^31.0.0",
     "lucide-react": "^0.383.0",
     "next": "^14.2.3",
     "react": "^18.3.1",
@@ -26,6 +26,7 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "concurrently": "^7.6.0",
+    "electron": "^31.0.0",
     "electron-builder": "^22.10.5",
     "electron-is-dev": "^3.0.1",
     "eslint": "^8",
@@ -36,11 +37,14 @@
     "wait-on": "^6.0.1"
   },
   "build": {
-    "appId": "com.example.yourapp",
+    "appId": "front-automation-cad",
     "files": [
       "out/**/*",
-      "main.js"
+      "src/main.js"
     ],
+    "directories": {
+      "output": "dist"
+    },
     "mac": {
       "target": "dmg"
     },
