@@ -30,7 +30,7 @@ const Home: React.FC = () => {
     formData.append('file', selectedFile);
 
     try {
-      const response = await axios.post('http://localhost:5000/upload', formData, {
+      const response = await axios.post('process.env.NEXT_API_URL', formData, {
         headers: {
           'Content-Type': 'multipart/form-data',
         },
