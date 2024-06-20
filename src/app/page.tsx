@@ -5,7 +5,7 @@ import Image from "next/image";
 import Header from "../components/ui/header/page";
 import FileUpload from "../components/ui/input/page";
 import Dash from '../../public/dash.png';
-import dmSans from "../app/layout";
+import dmSans from "../app/layout"
 import axios from "axios";
 import Button from "../components/ui/button/page";
 

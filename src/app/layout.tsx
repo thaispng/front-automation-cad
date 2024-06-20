@@ -1,16 +1,16 @@
 import { ReactNode } from 'react';
 import Head from "next/head";
-import { Inter, Montserrat, DM_Sans } from 'next/font/google';
-import "./globals.css";
+import { Inter } from 'next/font/google';
+import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
-
 
 export default function RootLayout({
   children,
 }: Readonly<{
-  children: React.ReactNode | string;
+  children: ReactNode;
 }>) {
+  console.log('Rendering RootLayout');
   return (
     <html lang="en">
       <Head>

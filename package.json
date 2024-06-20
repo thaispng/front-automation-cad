@@ -3,20 +3,20 @@
   "version": "0.1.0",
   "description": "Front Automation CAD",
   "author": "Thais <thaisvtr26@gmail.com>",
-  "main": "src/main.js",
+  "main": "main.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
     "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
-    "electron-pack": "npm run build && electron-builder"
+    "dist": "next build && electron-builder"
   },
   "dependencies": {
     "axios": "^1.7.2",
     "classnames": "^2.5.1",
     "lucide-react": "^0.383.0",
-    "next": "^14.2.3",
+    "next": "^14.2.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "sharp": "^0.33.4"
@@ -26,8 +26,8 @@
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "concurrently": "^7.6.0",
-    "electron": "^31.0.0",
-    "electron-builder": "^22.10.5",
+    "electron": "^31.0.2",
+    "electron-builder": "^22.14.13",
     "electron-is-dev": "^3.0.1",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
@@ -37,16 +37,19 @@
     "wait-on": "^6.0.1"
   },
   "build": {
-    "appId": "front-automation-cad",
+    "appId": "AutomationCAD",
     "files": [
-      "out/**/*",
-      "src/main.js"
+      "main.js",
+      "preload.js",
+      "out",
+      "node_modules",
+      "package.json"
     ],
     "directories": {
-      "output": "dist"
+      "buildResources": "assets"
     },
     "mac": {
-      "target": "dmg"
+      "category": "your.app.category.type"
     },
     "win": {
       "target": "nsis"
