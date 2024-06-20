@@ -5,23 +5,25 @@ import Image from "next/image";
 import Header from "../components/ui/header/page";
 import FileUpload from "../components/ui/input/page";
 import Dash from '../../public/dash.png';
-import dmSans from "../app/layout"
+import { Inter } from 'next/font/google';
 import axios from "axios";
 import Button from "../components/ui/button/page";
 
+const inter = Inter({ subsets: ['latin'] });
+
 const Home: React.FC = () => {
-  const [selectedFile, setSelectedFile] = useState<File | null>(null); // armazena o arquivo selecionado
-  const [message, setMessage] = useState<string>(''); // crisr menssagem de erro e sucesso
-  const [messageType, setMessageType] = useState<string>(''); // menssage de sucesso e erro
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+  const [message, setMessage] = useState<string>('');
+  const [messageType, setMessageType] = useState<string>('');
 
   const handleFileSelect = (file: File) => {
-    setSelectedFile(file); // seta o arquivo selecionado
+    setSelectedFile(file);
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!selectedFile) { // se o arqquivo não for selecionado irá retornar uma mensagem de erro
-      setMessage('Selecione um arquivo para enviar.'); 
+    if (!selectedFile) {
+      setMessage('Selecione um arquivo para enviar.');
       setMessageType('error');
       return;
     }
@@ -46,12 +48,12 @@ const Home: React.FC = () => {
   return (
     <>
       <Header />
-      <main className="flex min-h-screen justify-evenly md:flex-row items-center justify-center gap-4 px-5 md:px-10 bg-primary dark:bg-background">
+      <main className={`flex min-h-screen justify-evenly md:flex-row items-center justify-center gap-4 px-5 md:px-10 bg-primary dark:bg-background ${inter.className}`}>
         <div className="w-full md:w-[500px] h-full flex-initial flex-col items-center px-5 gap-2">
           <h1 className="text-2xl font-semibold text-primary dark:text-foreground my-1">
             Cadastro de processos
           </h1>
-          <p className={`${dmSans} text-base text-secondary dark:text-secondary font-normal my-1`}>
+          <p className="text-base text-secondary dark:text-secondary font-normal my-1">
             Anexe aqui sua planilha para iniciar
           </p>
           <form onSubmit={handleSubmit}>
@@ -82,6 +84,7 @@ const Home: React.FC = () => {
             className="w-[300px] h-[300px] md:w-[300px] md:h-[300px]"
             src={Dash}
             alt="Profiling"
+            priority
           />
         </div>
       </main>
