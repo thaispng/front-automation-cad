@@ -23,6 +23,7 @@ async function createWindow() {
   } else {
     // Carregar arquivo HTML gerado pelo Next.js após o build
     win.loadFile(path.join(__dirname, 'out', 'index.html'));
+    win.webContents.openDevTools();
   }
 }
 
