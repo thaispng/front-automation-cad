@@ -1,3 +1,5 @@
+const path = require('path');
+
 /** @type {import('next').NextConfig} */
 
 const nextConfig = {
@@ -10,7 +12,12 @@ const nextConfig = {
     unoptimized: true,
     
   },
-  // outras configurações conforme necessário
+  webpack: (config) => {
+    config.resolve.alias['@'] = path.resolve(__dirname);
+    return config;
+  },
+  basePath: '',
+  trailingSlash: true,
 };
 
 module.exports = nextConfig;
