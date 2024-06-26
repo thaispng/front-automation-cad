@@ -4,7 +4,6 @@
   "description": "Front Automation CAD",
   "author": "Thais <thaisvtr26@gmail.com>",
   "main": "main.js",
-  "main": "main.js",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
