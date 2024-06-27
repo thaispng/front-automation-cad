@@ -1,7 +1,7 @@
 (async () => {
   const { app, BrowserWindow } = await import('electron');
   const path = await import('path');
-  const isDev = await import('electron-is-dev');
+  const isDev = (await import('electron-is-dev')).default;
 
   function createWindow() {
     const mainWindow = new BrowserWindow({
@@ -13,9 +13,9 @@
     });
 
     mainWindow.loadURL(
-      isDev.default
+      isDev
         ? 'http://localhost:3000'
-        : `file://${path.join(__dirname, '../build/index.html')}`
+        : `file://${path.join(__dirname, 'out/index.html')}`
     );
   }
 
