@@ -27,12 +27,12 @@ export default function Header() {
         </button>
       </div>
       <div className="flex items-center gap-2">
-        <Link className="text-neutral-500 hover:text-neutral-400" href="/">
+        <a className="text-neutral-500 hover:text-neutral-400" href="/">
           Inicial
-        </Link>
-        <Link className="text-neutral-500 hover:text-neutral-400" href="/Documentation">
+        </a>
+        <a className="text-neutral-500 hover:text-neutral-400" href="./Documentation">
           Documentação
-        </Link>
+        </a>
       </div>
     </header>
   );
